@@ -1,0 +1,157 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.jeu {
+  
+  position: relative;
+  width: 500px;
+  height: 200px;
+  /* border: 1px solid black; */
+  overflow: hidden;
+  background: #4bcddb;
+}
+.jeu:before {
+  content: '';
+  /* z-index: -5; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffcd00;
+  border-radius: 50%;
+  width: 3000px;
+  height: 1000px;
+}
+
+#perso:before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  background: #466968;
+  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+}
+
+#perso:after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  background: #fff;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  animation: cligne 3s infinite;
+}
+
+@keyframes cligne {
+  0% {
+    transform: scaleY(1);
+  }
+  5% {
+    transform: scaleY(0);
+  }
+  10% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+#perso {
+  position: absolute;
+  top: 140px;
+  left: 15px;
+  background: #466968;
+  width: 30px;
+  height: 60px;
+  border-radius: 25px 25px 25px 0px;
+  /* box-shadow: inset 5px 5px #ffffff50; */
+  animation: marche 200ms ease-in-out infinite;
+  transform-origin: bottom;
+}
+#perso.saut {
+  animation: saut 400ms ease-in-out;
+}
+
+@keyframes marche {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.05);
+  }
+}
+
+.nuage {
+  z-index: 4;
+  background: #fff;
+  width: var(--width);
+  height: var(--height);
+  position: absolute;
+  top: var(--top);
+  left: var(--left);
+  clip-path: polygon(1% 79%, 1% 79%, 3% 88%, 3% 88%, 6% 96%, 6% 96%, 11% 98%, 11% 98%, 21% 100%, 21% 100%, 77% 100%, 77% 100%, 87% 95%, 87% 95%, 93% 92%, 93% 92%, 95% 85%, 95% 85%, 98% 76%, 98% 76%, 98% 67%, 98% 67%, 94% 59%, 94% 59%, 83% 50%, 83% 50%, 81% 44%, 81% 44%, 86% 41%, 86% 41%, 90% 32%, 90% 32%, 89% 23%, 89% 23%, 85% 19%, 85% 19%, 78% 19%, 78% 19%, 74% 21%, 74% 21%, 71% 32%, 71% 32%, 69% 39%, 69% 39%, 66% 39%, 66% 39%, 63% 23%, 63% 23%, 60% 13%, 60% 13%, 56% 6%, 56% 6%, 48% 1%, 48% 1%, 44% 4%, 44% 4%, 40% 7%, 40% 7%, 38% 16%, 38% 16%, 36% 26%, 36% 26%, 37% 36%, 37% 36%, 37% 41%, 37% 41%, 40% 51%, 40% 51%, 34% 51%, 34% 51%, 27% 48%, 27% 48%, 22% 50%, 22% 50%, 17% 52%, 17% 52%, 14% 59%, 14% 59%, 16% 66%, 16% 66%, 18% 70%, 18% 70%, 18% 70%, 18% 70%, 14% 76%, 14% 76%, 10% 73%, 10% 73%, 5% 70%, 5% 70%, 1% 71%, 1% 71%);
+  animation: nuage calc(var(--duree) * 3) linear infinite;
+}
+
+@keyframes nuage {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(calc(500px + var(--width)));
+  }
+  50.01% {
+    transform: translateX(calc(500px + var(--width) * -1));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes saut {
+  0% {
+    top: 130px;
+  }
+  30% {
+    top: 80px;
+  }
+  70% {
+    top: 80px;
+  }
+  100% {
+    top: 130px;
+  }
+}
+
+#obstacle {
+  background: #13ae2f;
+  width: 25px;
+  height: 40px;
+  position: absolute;
+  top: 160px;
+  left: 500px;
+  clip-path: polygon(17% 53%, 4% 35%, 26% 34%, 20% 8%, 40% 23%, 62% 5%, 61% 27%, 83% 18%, 75% 48%, 64% 65%, 81% 100%, 18% 100%);
+  animation: fiouu 1.2s infinite linear;
+}
+
+@keyframes fiouu {
+  from {
+    left: 500px;
+  }
+  to {
+    left: -20px;
+  }
+}
