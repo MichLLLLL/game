@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="./suggest.css">
+    <link rel="icon" type="image/png" href="./images/logo api contrepeterie.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css">
+    <script src="https://kit.fontawesome.com/fec3a1ae58.js" crossorigin="anonymous"></script>
+
+    <title>Proposer une contrepèterie - API Contrepèteries</title>
+</head>
+<body>
+    <script>
+        function toggleMenu() {
+            document.querySelector('.btn-menu-mobile-container').classList.toggle('click')
+            document.querySelector('.menu-mobile-container').classList.toggle('show')
+            document.querySelector('header').classList.toggle('shadow')
+        }
+    </script>
+    <header>
+        <!-- <div class="container-header">
+            <div class="presentation">
+                
+                <div class="logo"><img src="./logo api contrepeterie.png" alt="API"></div>
+
+                <div class="texte">
+                    <h1>Une API de contrepèteries en français !</h1>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque a enim, laboriosam illum magnam cumque sequi numquam consequatur eos vel veniam consectetur amet ducimus fuga molestiae aperiam minus possimus sed.</p>
+                </div>
+            </div>
+            <div class="exemple"></div>
+        </div> -->
+        <div class="logo"><img src="./images/logo api contrepeterie.png" alt="API"></div>
+        <h1>API de Contrepèteries</h1>
+
+        <div class="menu-container">
+            <ul>
+                <li><a href="#"><i class="fab fa-github"></i> Github</a></li>
+                <li><a href="#"><i class="fab fa-discord"></i> Discord</a></li>
+                <li id="cptr"><a href="/"><i class="fas fa-home"></i> Accueil</a></li>
+            </ul>
+        </div>
+        
+        <div class="menu-mobile-container">
+            <ul>
+                <li><a href="#"><i class="fab fa-github"></i> Github</a></li>
+                <li><a href="#"><i class="fab fa-discord"></i> Discord</a></li>
+                <li id="cptr-mobile"><a href="/"><i class="fas fa-home"></i> Accueil</a></li>
+            </ul>
+        </div>
+        <div onclick="toggleMenu()" class="btn-menu-mobile-container">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+    <div class="form-container">
+
+        <form action="/suggestion" method="post">
+            <h2>Proposer une contrepèterie</h2>
+            
+            <div>
+                <!-- <label for="phrase">Phrase</label> -->
+                <input type="text" name="phrase" id="phrase" placeholder="Phrase" autocomplete="off" required autofocus>
+            </div>
+            <div>
+                <!-- <label for="reponse">Réponse</label> -->
+                <input type="text" name="reponse" id="reponse" placeholder="Réponse" autocomplete="off" required>
+            </div>
+            <div id="btn">
+                <button type="submit">Envoyer !</button>
+            </div>
+
+        </form>
+
+    </div>
+    
+
+        <!-- <script>
+            let button = document.getElementById("submit");
+
+            button.addEventListener("click", () => {
+                // fetch("/suggestion", { 
+                //     method: "POST",
+                //     body: { phrase: "ma bite", reponse: 'chibre' }
+                // })
+
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", '/suggestion?phrase=chibre&reponse=bite', true)
+                xhr.send();
+            })
+        </script> -->
+    </form>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="icon" type="image/png" href="./images/logo api contrepeterie.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css">
+    <script src="https://kit.fontawesome.com/fec3a1ae58.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/agate.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>API Contrepèteries</title>
+</head>
+<body>
+    <script>
+        function toggleMenu() {
+            document.querySelector('.btn-menu-mobile-container').classList.toggle('click')
+            document.querySelector('.menu-mobile-container').classList.toggle('show')
+            document.querySelector('header').classList.toggle('shadow')
+        }
+
+        // let codes = Array.from(document.querySelectorAll("pre"));
+
+        // codes.forEach(code => {
+        //     code.addEventlistener('click', (e) => {
+        //         console.log('clic')
+        //         navigator.clipboard.writeText(e.target.innerText);
+        //     })
+        // })
+    </script>
+    <header>
+        <!-- <div class="container-header">
+            <div class="presentation">
+                
+                <div class="logo"><img src="./logo api contrepeterie.png" alt="API"></div>
+
+                <div class="texte">
+                    <h1>Une API de contrepèteries en français !</h1>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque a enim, laboriosam illum magnam cumque sequi numquam consequatur eos vel veniam consectetur amet ducimus fuga molestiae aperiam minus possimus sed.</p>
+                </div>
+            </div>
+            <div class="exemple"></div>
+        </div> -->
+        <div class="logo"><img src="./images/logo api contrepeterie.png" alt="API"></div>
+        <h1>API de Contrepèteries</h1>
+
+        <div class="menu-container">
+            <ul>
+                <li><a href="#"><i class="fab fa-github"></i> Github</a></li>
+                <li><a href="#"><i class="fab fa-discord"></i> Discord</a></li>
+                <li id="cptr"><a href="/suggestion"><i class="fas fa-paper-plane"></i> Proposer une contrepèterie</a></li>
+            </ul>
+        </div>
+        
+        <div class="menu-mobile-container">
+            <ul>
+                <li><a href="#"><i class="fab fa-github"></i> Github</a></li>
+                <li><a href="#"><i class="fab fa-discord"></i> Discord</a></li>
+                <li id="cptr-mobile"><a href="/suggestion"><i class="fas fa-paper-plane"></i> Proposer une contrepèterie</a></li>
+            </ul>
+        </div>
+        <div onclick="toggleMenu()" class="btn-menu-mobile-container">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+    <div class="presentation">
+        <div class="texte">
+            <h1>Une <span class="white">API</span> de <span class="white">contrepèteries</span> en français&nbsp;!</h1><br>
+            <!-- <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos est sapiente sint saepe. Autem atque dolore cumque praesentium sapiente, delectus soluta repellat dolorem sequi inventore ipsum unde molestiae ea eveniet.</p> -->
+        </div>
+        <div class="exemple-container"></div>
+    </div>
+
+    <h1 class="rubrique-titre">Présentation</h1>
+    <section class="rubrique">
+        <h3>De quoi s'agit-il ?</h3>
+        <p>Nous sommes une API de contrepèteries francophones proposant plus de 600 contrepèteries classées par catégorie et par niveau de vulgarité.</p><br>
+        <h3>D'où viennent les contrepèteries ?</h3>
+        <p>Les contrepèteries viennent en grande partie du site <a href="http://lapoulequimue.fr">La poule qui mue</a>, de l'ouvrage de Louis Perceau <em>La Redoute des contrepèteries</em> et de l'application <a href="https://play.google.com/store/apps/details?id=aasuited.net.contrepetrie&gl=FR">Contrepèterie Quizz</a>. Le reste vient de recherches, de nous et de notre entourage. </p>
+    </section>
+
+    <div class="container-attention">
+        <div class="attention">
+            <i class="fas fa-exclamation-triangle"></i>
+            <!-- <h4>Attention</h4> -->
+            <p>La contrepèterie est un art grivois, vous pourriez vous retrouver face à des termes choquants ou en montrer à des personnes qui ne le souhaitent pas.</p>
+        </div>
+    </div>  <br>
+
+    <h1 class="rubrique-titre">Documentation</h1>
+    <section class="rubrique">
+        <h3>Utilisation</h3>
+        <p>Pour utiliser l'API Rest, vous n'avez qu'à faire comme suit. Vous recevrez une contrepèterie aléatoire, par id, par catégorie ou par niveau de vulgarité en fonction de votre choix.</p><br>
+
+        <span class="petit-titre">Aléatoire</span>
+        <pre class="language-javascript"><code onclick="navigator.clipboard.writeText(this.innerText)" class="language-javascript">GET /api/random</code></pre> <br>
+
+        <span class="petit-titre exemple">Réponse attendue</span>
+        <pre class="language-json"><code onclick="navigator.clipboard.writeText(this.innerText)" class="language-json">{
+    "phrase": "Le docteur Barnard se hisse sur la porte.",
+    "indice_MD": "Le docteur Barnard se **h**isse sur la **p**orte.",
+    "indice_HTML": "Le docteur Barnard se &lt;b&gt;h&lt;/b&gt;isse sur la &lt;b&gt;p&lt;/b&gt;orte.",
+    "reponse": "Le docteur Barnard se pisse sur l'ahorte.",
+    "categorie": "Médecine",
+    "id": 3,
+    "vulgarite": ["1/5", "20%"];
+}</code></pre>
+        <br>
+        <hr>
+        <br>
+    <span class="petit-titre">Par catégorie</span>
+    <pre class="language-javascript"><code onclick="navigator.clipboard.writeText(this.innerText)" class="language-javascript">GET /api/random?cat=lieux</code></pre> <br>
+
+    <span class="petit-titre exemple">Réponse attendue</span>
+    <pre class="language-json"><code onclick="navigator.clipboard.writeText(this.innerText)" class="language-json">{
+    "phrase": "Regarde, on voit les Pouilles du cap !",
+    "indice_MD": "Regarde, on voit les **P**ouilles du **c**ap !",
+    "indice_HTML": "Regarde, on voit les &lt;b&gt;P&lt;/b&gt;ouilles du &lt;b&gt;c&lt;/b&gt;ap !",
+    "reponse": "Regarde, on voit les couilles du Pape !"
+    "categorie": "Lieux",
+    "id": 58,
+    "vulgarite": ["3/5", "60%"];
+}</code></pre>
+
+<br>
+    <span class="petit-titre">Par ID</span>
+    <pre class="language-javascript"><code onclick="navigator.clipboard.writeText(this.innerText)" class="language-javascript">GET /api/random?id=34</code></pre> <br>
+
+    <span class="petit-titre exemple">Réponse attendue</span>
+    <pre class="language-json"><code onclick="navigator.clipboard.writeText(this.innerText)" class="language-json">{
+    "phrase": "L'Afrique se développe dans le troc.",
+    "indice_MD": "L'A**f**rique se développe dans le **t**roc.",
+    "indice_HTML": "L'A&lt;b&gt;f&lt;/b&gt;rique se développe dans le &lt;b&gt;t&lt;/b&gt;roc.",
+    "reponse": "La trique se développe dans le froc."
+    "categorie": "Lieux",
+    "id": 34,
+    "vulgarite": ["2/5", "40%"];
+}</code></pre>
+
+<!-- <br>
+    <span class="petit-titre">Par niveau de vulgarité</span>
+    <pre class="language-javascript"><code class="language-javascript">GET /api/random?vulg=4-5
+    /api/random?vulg=80</code></pre> <br>
+
+    <span class="petit-titre exemple">Réponse attendue</span>
+    <pre class="language-json"><code class="language-json">{
+    "phrase": "Ne feins pas l'amour du Christ.",
+    "indice_MD": "Ne **f**eins pas l'amour du **Chr**ist.",
+    "indice_HTML": "Ne &lt;b&gt;f&lt;/b&gt;eins pas l'amour du &lt;b&gt;Chr&lt;/b&gt;ist.",
+    "reponse": "Ne crains pas l'amour du fist."
+    "categorie": "Religion",
+    "id": 12,
+    "vulgarite": ["4/5", "80%"];
+}</code></pre> -->
+
+    <p>Il vous est évidemment possible de combiner plusieurs filtres.</p>
+
+    </section>
+</body>
+</html>
